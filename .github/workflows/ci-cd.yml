@@ -1,29 +1,39 @@
-name: Deployment Pipeline
+name: Deploy to GitHub Pages
+
 on:
+  # Trigger the workflow every time you push to the `main` branch
+  # Using a different branch name? Replace `main` with your branch’s name
   push:
-    # paths-ignore:
-    #   - ".github/**"
-    branches:
-      - main
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
-      concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout 🛎️
-          uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v3
+      - name: Install, build, and upload your site
+        uses: withastro/action@v1
+        with:
+          # path: . # The root location of your Astro project inside the repository. (optional)
+          node-version: 20.11.0
+          package-manager: pnpm@latest
 
-        - name: Install, build, and upload your site
-          uses: withastro/action@v1
-          with:
-            package-manager: pnpm@latest 
-            # path: . # The root location of your Astro project inside the repository. (optional)
-            # node-version: 18 # The specific version of Node that should be used to build your site. Defaults to 18. (optional)
-
-        - name: Deploy 🚀
-          uses: JamesIves/github-pages-deploy-action@v4
-          with:
-            branch: gh-pages
-            folder: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
