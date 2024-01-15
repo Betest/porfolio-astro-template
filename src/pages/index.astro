@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import Experience from "../components/Experience.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
+import CodeIcon from "../components/icons/Code.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<Layout
+  title="Porfolio - Desarrollador Fullstack +3 años de experiencia"
+  description="Contrata a Yohan tobon desarrollador Fullstack Java, JavaScript, Python, TypeScript, Angular, React, Vue. Especializado en crear aplicaciones únicas."
+>
+  <main class="px-4">
+    <SectionContainer class="py-44 pb-32">
+      <img
+        class="rounded-full size-12 mb-4"
+        src="/profile.jpg"
+        alt="photo"
+      />
+      <h1
+        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+      >
+        Hola!, soy Yohan Tobon <a
+          href="https://www.linkedin.com/in/yohan-tobon-catano/"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center"
+        >
+          <Badge>Disponible para trabajar</Badge>
+        </a>
+      </h1>
+      <h2
+        class="text-left text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
+      >
+        <span class="text-yellow-800 dark:text-yellow-200">
+          Desarrollador Fullstack.</span
+        >
+        <p>+3 años de experiencia.</p>
+        <p>Java | JavaScript | Python | TypeScript | Angular | React | Vue</p>
+      </h2>
+      <br />
+      <div class="text-justify text-sky-800 dark:text-sky-200">
+        <span
+          >Conocimiento en DevOps, AWS, Azure, GitHub Actions. experiencia del
+          lado del backend con java, nodejs, python (flask, Fast API, Django
+          rest framework), Docker, del lado del frontend: Angular, React, Vue.</span
+        >
+        <br />
+        <span
+          >También he realizado proyectos de webscrapping con python, lambdas
+          con python, golang y firebase.</span
+        >
+      </div>
+      <br />
+      <h2
+        class="text-left text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
+      >
+        <span class="text-green-800 dark:text-green-200">
+          Medellín, Antioquia</span
+        >.
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill href="https://www.linkedin.com/in/yohan-tobon-catano/">
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/Betest">
+          <GitHubIcon class="size-4 md:size-6" />
+          GitHub
+        </SocialPill>
+        <SocialPill href="mailto:yohan.tob20@gmail.com">
+          <MailIcon class="size-4 md:size-6" />
+          yohan.tob20@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <Briefcase class="size-7" />
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <CodeIcon class="size-7" />
+        Proyectos
+      </h2>
+      <p>Sección en construcción...</p>
+    </SectionContainer>
+  </main>
+</Layout>

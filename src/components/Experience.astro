@@ -1,0 +1,28 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCIE = [
+  {
+    date: "Actualmente...",
+    title: "Analista Desarrollo intermedio − QVision Technologies",
+    description:
+      "Analisis y refactorización código legacy, implementación de mejoras, desarrollo de historias de usuario (frontend y backend). Ajuste modelo de datos, implementación sistema de pagos y pasarela de pagos. Django rest framework - React - Jenkins - Gitlab.",
+    link: "https://qvisiontechnologies.com/es/inicio-es/",
+  },
+  {
+    date: "Enero 2020 - Noviembre 2021",
+    title: "Analista Desarrollo − Cidenet",
+    description:
+      "Acompañamiento en historias de usuarios, correcciones y desarrollo de requerimientos de inicio a fin, pruebas unitarias, pruebas de conceptos para nuevas funcionalidades. Java - PostgreSQL - Angular - React - AWS - Azure.",
+  },
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
